@@ -1,0 +1,4 @@
+- echo "#!/bin/bash" > run.sh.tmp
+- echo "python3 -m uvicorn main:app --host 0.0.0.0 --port \$PORT" >> run.sh.tmp
+- mv run.sh.tmp run.sh
+- chmod +x run.sh
