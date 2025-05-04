@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# Найти Python в системе и виртуальном окружении
-if [ -f "/opt/render/project/.venv/bin/python" ]; then
-    PYTHON="/opt/render/project/.venv/bin/python"
-elif [ -f "/opt/render/project/python/bin/python" ]; then
-    PYTHON="/opt/render/project/python/bin/python"
-else
-    PYTHON="python3"
-fi
+# Динамически определяем номер порта
+PORT=${PORT:-8000}
 
-# Запустить приложение с найденным Python
-$PYTHON -m uvicorn main:app --host 0.0.0.0 --port $PORT
+# Запускаем приложение
+exec python -m uvicorn main:app --host 0.0.0.0 --port $PORT
